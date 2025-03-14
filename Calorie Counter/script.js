@@ -36,11 +36,11 @@ function calculateCalories(e) {
   e.preventDefault();
   isError = false;
 
-  const breakfastNumberInputs = document.querySelectorAll('#breakfast input[type=number]');
-  const lunchNumberInputs = document.querySelectorAll('#lunch input[type=number]');
-  const dinnerNumberInputs = document.querySelectorAll('#dinner input[type=number]');
-  const snacksNumberInputs = document.querySelectorAll('#snacks input[type=number]');
-  const exerciseNumberInputs = document.querySelectorAll('#exercise input[type=number]');
+  const breakfastNumberInputs = document.querySelectorAll("#breakfast input[type='number']");
+  const lunchNumberInputs = document.querySelectorAll("#lunch input[type='number']");
+  const dinnerNumberInputs = document.querySelectorAll("#dinner input[type='number']");
+  const snacksNumberInputs = document.querySelectorAll("#snacks input[type='number']");
+  const exerciseNumberInputs = document.querySelectorAll("#exercise input[type='number']");
 
   const breakfastCalories = getCaloriesFromInputs(breakfastNumberInputs);
   const lunchCalories = getCaloriesFromInputs(lunchNumberInputs);
@@ -70,8 +70,8 @@ function calculateCalories(e) {
 function getCaloriesFromInputs(list) {
   let calories = 0;
 
-  for (let i = 0; i < list.length; i++) {
-    const currVal = cleanInputString(list[i].value);
+  for (const item of list) {
+    const currVal = cleanInputString(item.value);
     const invalidInputMatch = isInvalidInput(currVal);
 
     if (invalidInputMatch) {
@@ -87,8 +87,8 @@ function getCaloriesFromInputs(list) {
 function clearForm() {
   const inputContainers = Array.from(document.querySelectorAll('.input-container'));
 
-  for (let i = 0; i < inputContainers.length; i++) {
-    inputContainers[i].innerHTML = '';
+  for (const container of inputContainers) {
+    container.innerHTML = '';
   }
 
   budgetNumberInput.value = '';
@@ -98,4 +98,4 @@ function clearForm() {
 
 addEntryButton.addEventListener("click", addEntry);
 calorieCounter.addEventListener("submit", calculateCalories);
-clearButton.addEventListener("click", clearForm);
+clearButton.addEventListener('click', clearForm);
